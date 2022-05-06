@@ -1,0 +1,51 @@
+CREATE TABLE IF NOT EXISTS `plant webshop`.`product` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `sku` VARCHAR(255) DEFAULT NULL,
+  `name` VARCHAR(255) DEFAULT NULL,
+  `description` VARCHAR(255) DEFAULT NULL,
+  `unit_price` DECIMAL(13,2) DEFAULT NULL,
+  `image_url` VARCHAR(255) DEFAULT NULL,
+  `active` BIT DEFAULT 1,
+  `units_in_stock` INT(11) DEFAULT NULL,
+   `date_created` DATETIME(6) DEFAULT NULL,
+  `last_updated` DATETIME(6) DEFAULT NULL,
+  `category_id` BIGINT(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_category` (`category_id`),
+  CONSTRAINT `fk_category` FOREIGN KEY (`category_id`) REFERENCES `product_category` (`id`)
+) 
+ENGINE=InnoDB
+AUTO_INCREMENT = 1;
+
+
+INSERT INTO product_category(category_name) VALUES ('Plants');
+
+INSERT INTO product (sku, name, description, image_url, active, units_in_stock,
+unit_price, category_id, date_created)
+VALUES ('Plant-0001', 'Ficus', 'Ficus is a genus of about 850 species of woody trees, shrubs, vines, epiphytes and hemiepiphytes in the family Moraceae.',
+'https://media.istockphoto.com/photos/small-ficus-tree-planted-in-a-brown-clay-pot-picture-id182467682?s=612x612'
+,1,100,19.99,1, NOW());
+
+INSERT INTO product (sku, name, description, image_url, active, units_in_stock,
+unit_price, category_id, date_created)
+VALUES ('Plant-0002', 'Prickly Pear Cacti', 'Opuntia, commonly called prickly pear or pear cactus, is a genus of flowering plants in the cactus family Cactaceae. ',
+'https://thumbs.dreamstime.com/z/weeping-fig-ficus-benjamina-pot-15718461.jpg'
+,1,100,29.99,1, NOW());
+
+INSERT INTO product (sku, name, description, image_url, active, units_in_stock,
+unit_price, category_id, date_created)
+VALUES ('Plant-0003', 'Wildflowers', 'A wildflower is a flower that grows in the wild, meaning it was not intentionally seeded or planted.',
+'https://thumbs.dreamstime.com/z/weeping-fig-ficus-benjamina-pot-15718461.jpg'
+,1,100,24.99,1, NOW());
+
+INSERT INTO product (sku, name, description, image_url, active, units_in_stock,
+unit_price, category_id, date_created)
+VALUES ('Plant-0004', 'Cactus', 'A cactus is a member of the plant family Cactaceae, a family comprising about 127 genera with some 1750 known species of the order Caryophyllales. ',
+'https://images.fineartamerica.com/images-medium-large-5/single-white-greater-stitchwort-flower-jacky-parker-photography.jpg'
+,1,100,29.99, 1, NOW());
+
+INSERT INTO product (sku, name, description, image_url, active, units_in_stock,
+unit_price, category_id, date_created)
+VALUES ('Plant-0005', 'Tumbleweed', 'A tumbleweed is a structural part of the above-ground anatomy of a number of species of plants. It is a diaspore that once it is mature and dry, detaches from its root or stem and rolls due to the force of the wind.',
+'https://images.fineartamerica.com/images-medium-large-5/single-white-greater-stitchwort-flower-jacky-parker-photography.jpg'
+,1,100,24.99,1, NOW());
